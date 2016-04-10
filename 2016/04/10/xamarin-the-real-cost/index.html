@@ -1,0 +1,61 @@
+<!DOCTYPE html><html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="Personal blog of Mike Hanson a software engineer possessed by building quality into software through Test Drive Development"><title>Xamarin - The real cost | Test Possessed</title><link rel="stylesheet" type="text/css" href="/css/normalize.css"><link rel="stylesheet" type="text/css" href="/css/highlight.css"><link rel="stylesheet" type="text/css" href="/css/very-simple.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"></head><body><!-- include the sidebar--><!-- include ./includes/sidebar.jade--><!-- Blog title and subtitle--><header><div class="container header"><a id="logo" href="/." class="title">Test Possessed</a><span class="subtitle">incomplete = testCoverage &lt; complete</span><label id="toggle-menu" for="menu" onclick><i class="fa fa-bars"></i></label></div></header><!-- use checkbox hack for toggle nav-bar on small screens--><input id="menu" type="checkbox"><!-- Navigation Links--><nav id="nav"><div class="container"><a href="/" class="sidebar-nav-item active">Home</a><a href="/archives" class="sidebar-nav-item">Archives</a><a href="/about" class="sidebar-nav-item">About</a></div></nav><div id="header-margin-bar"></div><!-- gallery that comes before the header--><div class="wrapper"><div class="container post-header"><h1>Xamarin - The real cost</h1></div></div><div class="wrapper"><div class="container meta"><div class="post-time">2016-04-10</div><div class="post-tags"><a class="post-tag-link" href="/tags/android/">android</a>/<a class="post-tag-link" href="/tags/development/">development</a>/<a class="post-tag-link" href="/tags/ios/">ios</a>/<a class="post-tag-link" href="/tags/mobile/">mobile</a>/<a class="post-tag-link" href="/tags/windows-phone/">windows phone</a>/<a class="post-tag-link" href="/tags/winphone/">winphone</a>/<a class="post-tag-link" href="/tags/xamarin/">xamarin</a></div></div></div><article><div class="container post"><p>So Xamarin is now free and we can all create mobile apps using .NET, but when ready we need to distribute them.  Distributing apps isn’t free and the requirements and costs are different for each platform.  Before I got too far into developing my first app I wanted to make sure I could distribute it so researched what I had to do get my app out there on the three platforms iOS, Android and Windows Phone.  In this post I detail those requirements and costs.</p>
+<p>Once you create the next killer mobile app you need to distribute it to at least one of the app stores to get it out there where users can find it.  With Xamarin it is so easy to make your app work cross platform it is almost silly not to target all three platforms.  However that means publishing it to three “app stores”.</p>
+<ul>
+<li>Apple App Store</li>
+<li>Google Play</li>
+<li>Microsoft App Store</li>
+</ul>
+<p>All three require you to sign up for a Developer Account and all three charge you for doing so.  Google and Microsoft charge you a one off fee, while Apple charge you an annual subscription to maintain your account.  Prices quoted are subject to taxes dependent on where you are registering from.</p>
+<table>
+<thead>
+<tr>
+<th>Provider</th>
+<th style="text-align:right">Individual</th>
+<th style="text-align:right">Company</th>
+<th>Frequency</th>
+<th>Info</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Apple</td>
+<td style="text-align:right">$99</td>
+<td style="text-align:right">$99</td>
+<td>Annual</td>
+<td><a href="https://developer.apple.com/support/compare-memberships" target="_blank" rel="external">Apple Developer</a></td>
+</tr>
+<tr>
+<td>Google</td>
+<td style="text-align:right">$25</td>
+<td style="text-align:right">$25</td>
+<td>One Off</td>
+<td><a href="http://developer.android.com/distribute/googleplay/about.html" target="_blank" rel="external">Google Play</a></td>
+</tr>
+<tr>
+<td>Microsoft</td>
+<td style="text-align:right">$19</td>
+<td style="text-align:right">$99</td>
+<td>One Off</td>
+<td><a href="https://developer.microsoft.com/en-us/windows/publish" target="_blank" rel="external">Windows Developer</a></td>
+</tr>
+</tbody>
+</table>
+<p> NB: Apple have an Enterprise Program for organisations that want to create and distribute apps for internal use only, which costs $299 per year.</p>
+<p> So not prohibitively expensive, it seems Apple want more than their pound of flesh, but then every thing Apple is expensive.  Generally I accept this as a case of “you get what you pay for” as I believe Apple hardware is so much better than the rest.  Perhaps strange coming from someone who worked for and makes thier living in the Microsoft world, but it is my experience.</p>
+<p> I signed up for the accounts I didn’t already have and I am good to go for a total of $144.34 (including taxes), actually being in the UK I of course paid in Sterling so £102.19.</p>
+<p> One important thing to note.  You can put off the cost of the Google and Microsoft accounts until your app is actually ready, but to develop apps for iOS in Visual Studio you will need a Mac with XCode and a Code Signing Certificate installed, which you can only get with a valid Apple Developer Account.</p>
+</div><!-- comment system--><div class="container"><hr><div id="disqus_thread"></div><script type="text/javascript">
+var disqus_shortname = 'testpossessed';
+var disqus_identifier = '2016/04/10/xamarin-the-real-cost/';
+var disqus_title = 'Xamarin - The real cost';
+var disqus_url = 'http://testpossessed.com/2016/04/10/xamarin-the-real-cost/';
+(function() {
+   var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+   dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+   (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">Blog comments powered by <span class="logo-disqus">Disqus</span></a></div></article><footer id="footer"><div class="container"><div class="bar"><div class="social"><a href="mailto:mike@testpossessed.com" target="_blank"><i class="fa fa-envelope-o"></i></a><a href="http://twitter.com/testpossessed" target="_blank"><i class="fa fa-twitter"></i></a><a href="https://github.com/testpossessed" target="_blank"><i class="fa fa-github"></i></a><a href="/atom.xml" target="_blank"><i class="fa fa-rss"></i></a></div><div class="footer">© 2016 <a href="/" rel="nofollow">Test Possessed</a>. Powered by <a rel="nofollow" target="_blank" href="https://hexo.io">Hexo</a>. Theme <a target="_blank" href="https://github.com/lotabout/very-simple">very-simple</a>.</div></div></div></footer><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.css"><script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script><script src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script><script>$(document).ready(function() {
+    $(".fancybox").fancybox();
+});</script></body></html>
