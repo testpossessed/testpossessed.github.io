@@ -1,0 +1,54 @@
+<!DOCTYPE html><html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="Personal blog of Mike Hanson a software engineer possessed by building quality into software through Test Drive Development"><title>My Xamarin Project | Test Possessed</title><link rel="stylesheet" type="text/css" href="/css/normalize.css"><link rel="stylesheet" type="text/css" href="/css/highlight.css"><link rel="stylesheet" type="text/css" href="/css/very-simple.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"></head><body><!-- include the sidebar--><!-- include ./includes/sidebar.jade--><!-- Blog title and subtitle--><header><div class="container header"><a id="logo" href="/." class="title">Test Possessed</a><span class="subtitle">incomplete = testCoverage &lt; complete</span><label id="toggle-menu" for="menu" onclick><i class="fa fa-bars"></i></label></div></header><!-- use checkbox hack for toggle nav-bar on small screens--><input id="menu" type="checkbox"><!-- Navigation Links--><nav id="nav"><div class="container"><a href="/" class="sidebar-nav-item active">Home</a><a href="/archives" class="sidebar-nav-item">Archives</a><a href="/about" class="sidebar-nav-item">About</a></div></nav><div id="header-margin-bar"></div><!-- gallery that comes before the header--><div class="wrapper"><div class="container post-header"><h1>My Xamarin Project</h1></div></div><div class="wrapper"><div class="container meta"><div class="post-time">2016-04-11</div><div class="post-tags"><a class="post-tag-link" href="/tags/visual-studio/">visual studio</a>/<a class="post-tag-link" href="/tags/xamarin/">xamarin</a></div></div></div><article><div class="container post"><p>So I am ready to start creating my app with Xamarin and Visual Studio, what am I going to create?</p>
+<p>My partner Faustina is Romanian.  She speaks perfectly good English and we have no problem communicating, but out of respect I feel compelled to learn her language.  Now Romanian is a Romance language, which means it “things” have gender.  Being an Englishman I struggle with this concept and I just about got my head around it when I learned French but Romanian adds the concept of Neutral Gender, where the singular thing is masculine while the plural is feminine.  Now most Romanians are kind enough not to laugh when I get this wrong but I want to get it right.  I learn well from repetition, so what I want is an app that presents me with flash cards containing a noun and asks me to choose the gender.  That would do for starters but I would really like it to be adaptive and test me more frequently on the ones I get wrong. For good measure I would like it to give me some stats.</p>
+<p>I have an iPhone and iPad and and looked in the store for such an app and didn’t find anything.  There are other apps designed to help me learn Romanian (as well as other languages) but none that focus on this specifi issue of mine.  So I am going to create one, and while I am there I am going to create it to support other Romance languages too.</p>
+<p>Here is my list of acceptance criteria for v1:</p>
+<ul>
+<li>Must present nouns in flash card format</li>
+<li>Must be able to select which gender I think the noun is</li>
+<li>Must show me nouns I get wrong more frequently</li>
+<li>Must show me nouns I get right three times in a row less frequently</li>
+<li>Must show stats for the noun on the card<ul>
+<li>Number of attempts</li>
+<li>Number of wrong attempts</li>
+<li>Number of correct attempts</li>
+</ul>
+</li>
+<li>Must provide overview stats<ul>
+<li>Number of nouns attempted</li>
+<li>Number of wrong attempts</li>
+<li>Number of correct attempts</li>
+<li>Ratio of correct to wrong as rating</li>
+</ul>
+</li>
+<li>Must maintain stats across devices</li>
+</ul>
+<p>So what am I going to call it?  Nounder was the first thing I thought of, a simple mashup of noun and gender, and it stuck so I am going to go ahead and create a Visual Studio solution for Nounder.</p>
+<p>I keep all my private source code in Git repositories in Visual Studio Team Services so I started by creating a new Team Project for Nounder and cloned the empty repo to my local disk where I will put everything. Here are the steps I took to get my solution setup.  I will talk about decisions I made after these.</p>
+<ol>
+<li>I asked Visual Studio to create a <em>New Project</em></li>
+<li>In the New Project dialog I located and selected the <em>C#\Cross Platform</em> branch of the Templates tree</li>
+<li>I selected <em>Blank App (Xamarin.Forms Portable)</em> as the project type</li>
+<li>I entered <em>Nounder</em> as the Name of the project</li>
+<li>I entered the path to my project repo</li>
+<li>I cleared the checkbox labelled <em>Create directory for solution</em></li>
+<li>I clicked on <em>OK</em></li>
+</ol>
+<p>Here is what the dialog looked like before I committed it<br><img src="/2016/04/11/my-xamarin-project/NewProject.png" alt="New project settings" title="New project settings"></p>
+<p>Here is what Solution Explorer looked like once the project was created and I collapsed the tree<br><img src="/2016/04/11/my-xamarin-project/SolutionExplorer.png" alt="Solution Explorer after project created" title="Solution Explorer after project created"></p>
+<p>So why did I choose the Xamarin.Forms Portable project type? Well when I first looked into Xamarin I looked at doing it the vanilla way, which meant I still had to know how to create views for each platform.  While this wasn’t a great hardship it was quite a bit of work to support all platforms.  Then I discovered Xamarin Forms and saw how it abstracted the difference in views away, I liked that idea as it got me much closer to the idea of 100% shared code.  When I delved deeper I found the Xamarin Forms development model was very close to that of Silverlight/WPF, which I have a lot of experience with.  Even better it supports binding and MVVM, which makes for much more testable code. I am sold and until I find something I can’t get done with Xamarin Forms I am going that route.</p>
+<p>Why Portable instead of Shared?  A Shared project doesn’t get compiled to an assembly, instead the the code files get linked into each platform specific project.  If you are a fan of conditional compilation and want to go this route for handling different implementations per platform then you have the choice.  I rarely use conditional compilation, instead I prefer to work to interfaces and provide different implementations of the interface for each platform so until I find I can’t get away with this I choose to go the Portable route and create other platform specific library projects to handle differences.  I will be using IoC within the project anyway so hopefully I will be able to utilise this to inject different implementations. </p>
+</div><!-- comment system--><div class="container"><hr><div id="disqus_thread"></div><script type="text/javascript">
+var disqus_shortname = 'testpossessed';
+var disqus_identifier = '2016/04/11/my-xamarin-project/';
+var disqus_title = 'My Xamarin Project';
+var disqus_url = 'http://testpossessed.com/2016/04/11/my-xamarin-project/';
+(function() {
+   var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+   dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+   (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">Blog comments powered by <span class="logo-disqus">Disqus</span></a></div></article><footer id="footer"><div class="container"><div class="bar"><div class="social"><a href="mailto:mike@testpossessed.com" target="_blank"><i class="fa fa-envelope-o"></i></a><a href="http://twitter.com/testpossessed" target="_blank"><i class="fa fa-twitter"></i></a><a href="https://github.com/testpossessed" target="_blank"><i class="fa fa-github"></i></a><a href="/atom.xml" target="_blank"><i class="fa fa-rss"></i></a></div><div class="footer">© 2016 <a href="/" rel="nofollow">Test Possessed</a>. Powered by <a rel="nofollow" target="_blank" href="https://hexo.io">Hexo</a>. Theme <a target="_blank" href="https://github.com/lotabout/very-simple">very-simple</a>.</div></div></div></footer><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.css"><script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script><script src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script><script>$(document).ready(function() {
+    $(".fancybox").fancybox();
+});</script></body></html>
